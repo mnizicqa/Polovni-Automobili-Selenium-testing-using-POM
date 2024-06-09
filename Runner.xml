@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PolovniAutomobili" thread-count="1" data-provider-thread-count="1">
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="env" value="PROD"/>
+    <parameter name="quit" value="YES"/>
+
+    <test name="Pretraga automobila marke BMW">
+        <classes>
+            <class name="tests.PolovniAutomobili"/>
+        </classes>
+    </test>
+</suite>
