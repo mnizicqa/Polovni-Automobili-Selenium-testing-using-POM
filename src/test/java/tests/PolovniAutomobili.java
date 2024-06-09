@@ -9,8 +9,6 @@ import pages.HomePage;
 
 public class PolovniAutomobili extends BaseTest{
 
-    HomePage homePage;
-
     @BeforeMethod
     @Parameters({"browser"})
     public void setup(String browser) throws Exception {
