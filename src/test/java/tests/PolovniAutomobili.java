@@ -7,7 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-public class PolovniAutomobili extends BaseTest{
+public class PolovniAutomobili extends BaseTest {
 
     @BeforeMethod
     @Parameters({"browser", "wait", "env"})
@@ -18,8 +18,8 @@ public class PolovniAutomobili extends BaseTest{
 
     @AfterMethod
     @Parameters({"quit"})
-    public void tearDown(String quit){
-        if(quit.equalsIgnoreCase("Yes")) quit();
+    public void tearDown(String quit) {
+        if (quit.equalsIgnoreCase("Yes")) quit();
     }
 
     @Epic("Pretraga")
@@ -34,7 +34,7 @@ public class PolovniAutomobili extends BaseTest{
     @Severity(SeverityLevel.CRITICAL)
     public void searchVehicle() throws Exception {
         HomePage homePage = new HomePage(driver);
-        homePage.searchCar("BMW","335", "30000", "2015 god.", "Beograd", "Samo polovna vozila");
+        homePage.searchCar("BMW", "335", "30000", "2015 god.", "Beograd", "Samo polovna vozila");
         reportScreenshot("Provjera uspjeha pretrage automobila marke BMW", "uspješna pretraga");
     }
 }

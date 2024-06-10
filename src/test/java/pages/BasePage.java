@@ -23,18 +23,19 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(css = "[data-label='Naslovna']")
     WebElement homeButton;
 
-    public void goToHomePage(){
+    public void goToHomePage() {
         homeButton.click();
     }
 
     WebDriverWait webDriverWait;
-    public void click(WebElement element){
+
+    public void click(WebElement element) {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
@@ -50,21 +51,21 @@ public class BasePage {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
 
         int retryCount = 0;
-        while (retryCount < maxRetries){
+        while (retryCount < maxRetries) {
             try {
                 Actions actions = new Actions(driver);
                 actions.moveToElement(element).build().perform();
                 element.click();
-                System.out.println(getCurrentTimeAndDate()+" Clicked: "+log);
+                System.out.println(getCurrentTimeAndDate() + " Clicked: " + log);
                 break;
-            }catch (Exception e){
+            } catch (Exception e) {
                 retryCount++;
-                System.out.println("Retry: "+retryCount+" to click on"+log);
-                if(retryCount==maxRetries){
+                System.out.println("Retry: " + retryCount + " to click on" + log);
+                if (retryCount == maxRetries) {
                     e.printStackTrace();
                     System.out.println(e.getMessage());
-                    baseTest.reportScreenshot("failedClick","Failed to click");
-                    throw new Exception(getCurrentTimeAndDate()+" Failed to click element: "+log);
+                    baseTest.reportScreenshot("failedClick", "Failed to click");
+                    throw new Exception(getCurrentTimeAndDate() + " Failed to click element: " + log);
                 }
             }
         }
@@ -80,7 +81,7 @@ public class BasePage {
         System.out.println(getCurrentTimeAndDate() + " Verified: " + log);
     }
 
-    public String getCurrentTimeAndDate(){
+    public String getCurrentTimeAndDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);

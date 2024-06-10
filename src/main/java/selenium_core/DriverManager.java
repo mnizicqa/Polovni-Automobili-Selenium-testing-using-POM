@@ -7,15 +7,15 @@ public abstract class DriverManager {
 
     public abstract void createDriver();
 
-    public void quitDriver(){
-        if(null!=driver){
+    public void quitDriver() {
+        if (null != driver) {
             driver.quit();
             driver = null;
         }
     }
 
-    public WebDriver getDriver(){
-        if(driver == null){
+    public WebDriver getDriver() {
+        if (driver == null) {
             createDriver();
         }
         return driver;

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     String url = "https://www.polovniautomobili.com/";
 
@@ -20,24 +20,24 @@ public class HomePage extends BasePage{
 
     String carBrandAndModel = "BMW 335";
 
-    public HomePage(WebDriver driver){
+    public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css =".paBlueButtonPrimary")
+    @FindBy(css = ".paBlueButtonPrimary")
     WebElement consentCookie;
 
-    @FindBy(css ="[title=' Sve marke']")
+    @FindBy(css = "[title=' Sve marke']")
     WebElement brands;
 
-    @FindBy(css ="[title=' Svi modeli']")
+    @FindBy(css = "[title=' Svi modeli']")
     WebElement models;
 
-    @FindBy(css="[title=' Godište od']")
+    @FindBy(css = "[title=' Godište od']")
     WebElement yearFrom;
 
-    @FindBy(css= "[title=' do']")
+    @FindBy(css = "[title=' do']")
     WebElement yearTo;
 
     @FindBy(css = ".sumo_year_to div ul li:nth-child(3) > label")
@@ -73,39 +73,39 @@ public class HomePage extends BasePage{
     @FindBy(css = "[title=' Polovna i nova vozila']")
     WebElement usedOrNew;
 
-    @FindBy(css ="#credit")
+    @FindBy(css = "#credit")
     WebElement creditCheckbox;
 
-    @FindBy(css ="[name='submit_1']")
+    @FindBy(css = "[name='submit_1']")
     WebElement searchButton;
 
     public void acceptCookies() {
         consentCookie.click();
     }
 
-    public void assertCorrectURL(){
-        assertEQ(driver.getCurrentUrl(), url,"URL");
+    public void assertCorrectURL() {
+        assertEQ(driver.getCurrentUrl(), url, "URL");
     }
 
-    public void selectBrand (String brand) throws Exception {
+    public void selectBrand(String brand) throws Exception {
         click(brands);
-        click(driver.findElement(By.xpath("//label[text()='"+brand+"']")),"Car brand clicked: "+brand);
+        click(driver.findElement(By.xpath("//label[text()='" + brand + "']")), "Car brand clicked: " + brand);
     }
 
     public void selectModel(String model) throws Exception {
         WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[title=' Svi modeli']")));
         click(models);
-        click(driver.findElement(By.xpath("//label[contains(text(),'"+model+"')]")),"Car model clicked: "+model);
+        click(driver.findElement(By.xpath("//label[contains(text(),'" + model + "')]")), "Car model clicked: " + model);
     }
 
     public void enterPrice(String price) {
-       driver.findElement(By.cssSelector("#price_to")).sendKeys(price);
+        driver.findElement(By.cssSelector("#price_to")).sendKeys(price);
     }
 
     public void selectYearFrom(String year) throws Exception {
         click(yearFrom);
-        click(driver.findElement(By.xpath("//label[contains(text(),'"+year+"')]")), "Year from clicked: " + year);
+        click(driver.findElement(By.xpath("//label[contains(text(),'" + year + "')]")), "Year from clicked: " + year);
     }
 
     public void selectYearTo() throws Exception {
@@ -133,12 +133,12 @@ public class HomePage extends BasePage{
 
     public void selectRegion(String region) throws Exception {
         click(regionSelect);
-        click(driver.findElement(By.xpath("//label[text()='"+region+"']")), "Region clicked: " + region);
+        click(driver.findElement(By.xpath("//label[text()='" + region + "']")), "Region clicked: " + region);
     }
 
     public void selectUsedOrNew(String usedOrNewCar) throws Exception {
         click(usedOrNew);
-        click(driver.findElement(By.xpath("//label[text()='"+usedOrNewCar+"']")), "Used or new car clicked: " + usedOrNewCar);
+        click(driver.findElement(By.xpath("//label[text()='" + usedOrNewCar + "']")), "Used or new car clicked: " + usedOrNewCar);
     }
 
     public void checkCreditCheckbox() throws Exception {
@@ -146,7 +146,7 @@ public class HomePage extends BasePage{
     }
 
     public void clickSearchButton() throws Exception {
-        click(searchButton,"Search button has been clicked!");
+        click(searchButton, "Search button has been clicked!");
     }
 
     public void checkChosenCar() {
