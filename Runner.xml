@@ -4,6 +4,7 @@
     <parameter name="browser" value="CHROME"/>
     <parameter name="env" value="PROD"/>
     <parameter name="quit" value="YES"/>
+    <parameter name="wait" value="30"/>
 
     <test name="Pretraga automobila marke BMW">
         <classes>

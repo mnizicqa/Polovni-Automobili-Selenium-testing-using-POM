@@ -10,17 +10,16 @@ import pages.HomePage;
 public class PolovniAutomobili extends BaseTest{
 
     @BeforeMethod
-    @Parameters({"browser"})
-    public void setup(String browser) throws Exception {
-        init(browser);
+    @Parameters({"browser", "wait", "env"})
+    public void setup(String browser, String wait, String env) throws Exception {
+        init(browser, wait);
+        openApp(env);
     }
 
     @AfterMethod
     @Parameters({"quit"})
     public void tearDown(String quit){
-        if(quit.equalsIgnoreCase("Yes")){
-            quit();
-        }
+        if(quit.equalsIgnoreCase("Yes")) quit();
     }
 
     @Epic("Pretraga")
@@ -33,9 +32,7 @@ public class PolovniAutomobili extends BaseTest{
     @Issue("BD-275")
     @TmsLink("DEMO-1")
     @Severity(SeverityLevel.CRITICAL)
-    @Parameters({"env"})
     public void searchVehicle() throws Exception {
-        openApp("PROD");
         HomePage homePage = new HomePage(driver);
         homePage.searchCar("BMW","335", "30000", "2015 god.", "Beograd", "Samo polovna vozila");
         reportScreenshot("Provjera uspjeha pretrage automobila marke BMW", "uspješna pretraga");

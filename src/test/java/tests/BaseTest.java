@@ -21,10 +21,10 @@ public class BaseTest {
     WebDriver driver;
     String path = "results/screenshots/";
 
-    public void init (String browser) throws Exception {
+    public void init (String browser, String wait) throws Exception {
         driverManager = DriverManagerFactory.getDriverManager(browser);
         driver = driverManager.getDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.parseInt(wait)));
     }
 
     public void quit(){
