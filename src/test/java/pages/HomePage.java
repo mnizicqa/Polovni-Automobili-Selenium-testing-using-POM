@@ -18,8 +18,6 @@ public class HomePage extends BasePage {
 
     String expectedModalTitle = "Karoserije";
 
-    String carBrandAndModel = "BMW 335";
-
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -149,12 +147,12 @@ public class HomePage extends BasePage {
         click(searchButton, "Search button has been clicked!");
     }
 
-    public void checkChosenCar() {
-        String searchTitle = driver.findElement(By.xpath("//span[text() = 'BMW 335 ']")).getText();
-        assertEQ(searchTitle, carBrandAndModel, "Car brand and model");
+    public void checkChosenCar(String selectedCar) {
+        String searchTitle = driver.findElement(By.xpath("//span[contains(text(), '" + selectedCar + "')]")).getText();
+        assertEQ(searchTitle, selectedCar, "Car brand and model");
     }
 
-    public void searchCar(String brand, String model, String price, String yearFrom, String region, String usedOrNewCar) throws Exception {
+    public void searchCar(String brand, String model, String price, String yearFrom, String region, String usedOrNewCar, String selectedCar) throws Exception {
         acceptCookies();
         assertCorrectURL();
         selectBrand(brand);
@@ -169,6 +167,6 @@ public class HomePage extends BasePage {
         selectUsedOrNew(usedOrNewCar);
         checkCreditCheckbox();
         clickSearchButton();
-        checkChosenCar();
+        checkChosenCar(selectedCar);
     }
 }

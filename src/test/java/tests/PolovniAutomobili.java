@@ -34,7 +34,7 @@ public class PolovniAutomobili extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     public void searchVehicle() throws Exception {
         HomePage homePage = new HomePage(driver);
-        homePage.searchCar("BMW", "335", "30000", "2015 god.", "Beograd", "Samo polovna vozila");
+        homePage.searchCar("BMW", "335", "30000", "2015 god.", "Beograd", "Samo polovna vozila", "BMW 335");
         reportScreenshot("Provjera uspjeha pretrage automobila marke BMW", "uspješna pretraga");
     }
 }
